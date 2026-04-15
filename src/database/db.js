@@ -16,8 +16,8 @@ await db.exec(
   cpf NUMBER UNIQUE,
   nascimento DATE,
   telefone NUMBER,
-  enderecos INTEGER,
-  FOREIGN KEY(enderecos) references endereco(id)
+  idEndereco INTEGER,
+  FOREIGN KEY(idEndereco) references endereco(id)
   )
   `,
 )
@@ -29,7 +29,7 @@ await db.exec(
   tipo VARCHAR(30),
   numero NUMBER,
   complemento VARCHAR(50),
-  bairro,
+  bairro VARCHAR (50),
   cidade VARCHAR(50),
   estado VARCHAR(2),
   cep VARCHAR(8),

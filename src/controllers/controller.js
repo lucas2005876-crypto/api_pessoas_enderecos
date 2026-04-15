@@ -29,7 +29,7 @@ class controller {
 
       console.log('Dados carregados do banco')
     } catch (error) {
-      console.log('Erro ao carregar: ' + error.message)
+      console.log('Erro ao carregar no controller ge: ' + error.message)
     }
   }
 

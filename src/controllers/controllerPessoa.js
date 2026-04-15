@@ -11,13 +11,12 @@ class controllerPessoa {
 
       this.pessoa = pessoa
 
-      console.log('Dados carregados do banco')
     } catch (error) {
-      console.log('Erro ao carregar: ' + error.message)
+      console.log('Erro ao carregar em pessoas: ' + error.message)
     }
   }
 
-  retornaPessoaSemEnd = (req, res) => {
+  retornaPessoaSimples = (req, res) => {
     try {
       res.status(200).json(this.pessoa)
     } catch (error) {
