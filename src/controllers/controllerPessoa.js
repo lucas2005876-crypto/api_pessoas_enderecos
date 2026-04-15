@@ -77,6 +77,31 @@ class controllerPessoa {
     }
   }
 
+  deletarPessoa = async (req, res) => {
+    try {
+      const id = parseInt(req.params.id)
+
+      if (!id) {
+        throw new Error('ID inválido')
+      }
+
+      await db.run(`DELETE FROM endereco WHERE idPessoa = ?`, [id])
+
+      const result = await db.run(`DELETE FROM pessoa WHERE id = ?`, [id])
+
+      if (result.changes === 0) {
+        return res.status(404).send('Pessoa não encontrada')
+      }
+
+      await this.carregarDados()
+
+      res.status(200).send('Pessoa e endereços deletados com sucesso')
+    } catch (error) {
+      console.log('Erro ao deletar pessoa:', error)
+      res.status(400).send(error.message)
+    }
+  }
+
   formatarCpf = (cpf) => {
     cpf = cpf.toString()
 
